@@ -7,6 +7,8 @@ COPY src ./src
 RUN npm run build
 
 FROM node:24-alpine
+# Locally built by Coolify, so Diun cannot check it against a registry.
+LABEL diun.enable="false"
 ENV NODE_ENV=production
 WORKDIR /app
 COPY package.json package-lock.json ./
